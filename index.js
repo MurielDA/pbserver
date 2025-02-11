@@ -29,11 +29,14 @@ let persons = [
 // cors
 app.use(cors());
 
+// use static file to show homepage
+app.use(express.static('dist'))
+
 // json midlleware
 app.use(express.json());
 
 // define my own toke to format log
-morgan.token('postdata', (req, res)=> JSON.stringify(req.body))
+morgan.token('postdata', (req, res) => req.method === 'POST' ? JSON.stringify(req.body) : '')
 
 // define format
 morgan.format('post',':method :url :status :res[content-length] :response-time ms :postdata')
