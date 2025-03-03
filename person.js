@@ -4,7 +4,7 @@ mongoose.set('strictQuery', false)
 
 const url = process.env.MONGODB_URI
 
-console.log('connecting to db server:', url)
+console.log('connecting to db server')
 
 mongoose.connect(url)
     .then(result => {
